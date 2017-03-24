@@ -5,7 +5,7 @@ services:
   # This environment can be used to run npm and node
   # commands as well
   dev:
-    image: ambientum/node:6
+    image: ambientum/node:7
     container_name: notes-vue-dev
     command: npm run dev
     volumes:
