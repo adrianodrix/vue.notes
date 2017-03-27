@@ -1,26 +1,35 @@
 <template lang="html">
 <div class="sidebar">
-  <note></note>
-  <note></note>
-  <note></note>
-  <note></note>
-<!--
   <div class="sidebar__content">
-    <a href="">Start new Note</a>
+    <a href="#" @click.prevent="clearCurrentNote">Start new Note</a>
   </div>
-  <div class="sidebar__content">
+  <div v-if="notes.length">
+    <note v-for="note in notes" :note="note" :key="note.id"></note>
+
+  </div>
+  <div class="sidebar__content" v-else>
     Boo, no notes. Get writing!
   </div>
--->
 </div>
 </template>
 
 <script>
 import Note from './Note.vue'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
     Note
+  },
+  computed: {
+    ...mapGetters([
+      'notes'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'clearCurrentNote'
+    ])
   }
 }
 </script>
